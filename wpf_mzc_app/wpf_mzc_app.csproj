@@ -50,23 +50,23 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
-        <Compile Include="WelcomeWindow.xaml.cs">
+        <Compile Include="Views\Windows\MainWindow.xaml.cs">
+          <DependentUpon>MainWindow.xaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+        <Compile Include="Views\Windows\WelcomeWindow.xaml.cs">
           <DependentUpon>WelcomeWindow.xaml</DependentUpon>
         </Compile>
-        <Page Include="ButtonTheme.xaml" />
-        <Page Include="MainWindow.xaml">
-            <Generator>MSBuild:Compile</Generator>
-            <SubType>Designer</SubType>
-        </Page>
         <Compile Include="App.xaml.cs">
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
-        <Compile Include="MainWindow.xaml.cs">
-            <DependentUpon>MainWindow.xaml</DependentUpon>
-            <SubType>Code</SubType>
-        </Compile>
-        <Page Include="WelcomeWindow.xaml" />
+        <Page Include="Styles\ButtonTheme.xaml" />
+        <Page Include="Views\Windows\MainWindow.xaml">
+          <Generator>MSBuild:Compile</Generator>
+          <SubType>Designer</SubType>
+        </Page>
+        <Page Include="Views\Windows\WelcomeWindow.xaml" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs">
@@ -88,6 +88,11 @@
     <ItemGroup>
       <Resource Include="Images\Exit.png" />
       <Resource Include="Images\Logo_app.png" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Infrastructure" />
+      <Folder Include="Models" />
+      <Folder Include="ViewModels" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
