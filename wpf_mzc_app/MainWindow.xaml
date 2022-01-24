@@ -5,8 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_mzc_app"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="720" Width="480"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        
+        <Grid>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Border CornerRadius="10" Grid.RowSpan="2">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#252834" Offset="0.0"/>
+                        <GradientStop Color="#15171E" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            
+            <Button Width="27" 
+                    Height="27" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"
+                    Style="{StaticResource CloseButton}"
+                    > <Image Source="Images\Exit.png" Width="13" Height="13"></Image>
+            </Button>
+            
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Авторизация сотрудника"
+                           FontFamily="Exo2"
+                           FontWeight="SemiBold"
+                           FontSize="30" 
+                           Foreground="White" 
+                           HorizontalAlignment="Center"/>
+                <Image Source="Images\Logo_app.png" Width="352" Height="225" Margin="0,33,0,0"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1">
+                <TextBox Text="Логин"
+                         Padding="3,5,0,0"
+                         FontFamily="Exo2"
+                         FontWeight="Regular"
+                         FontSize="18"
+                         Foreground="White"
+                         Background="#131314"
+                         BorderThickness="0"
+                         Width="348"
+                         Height="30"
+                         Opacity="0.5"
+                         HorizontalAlignment="Center"/>
+                <Border Width="350"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"/>
+                
+                <PasswordBox Margin="0,70,0,0" Password="Пароль"
+                         Padding="3,5,0,0"
+                         FontFamily="Exo2"
+                         FontWeight="Regular"
+                         FontSize="18"
+                         Foreground="White"
+                         Background="#131314"
+                         BorderThickness="0"
+                         Width="348"
+                         Height="30"
+                         Opacity="0.5"
+                         HorizontalAlignment="Center"/>
+                <Border Width="350"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"/>
+            </StackPanel>
+            
+            <Button Grid.Row="1" 
+                    Style="{StaticResource RoundButton}"
+                    Width="346" 
+                    Height="36" 
+                    Margin="0,50,0,0"
+                    Name="SignUpButton"
+                    Content="войти"/>
+            
+        </Grid>
     </Grid>
 </Window>
+
