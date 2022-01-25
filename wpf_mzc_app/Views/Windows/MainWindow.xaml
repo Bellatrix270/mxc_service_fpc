@@ -30,7 +30,7 @@
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Top"
                     Style="{StaticResource CloseButton}"
-                    > <Image Source="Images\Exit.png" Width="13" Height="13"></Image>
+                    > <Image Source="/Images/Exit.png" Width="13" Height="13"></Image>
             </Button>
             
             <StackPanel VerticalAlignment="Center">
@@ -40,7 +40,7 @@
                            FontSize="30" 
                            Foreground="White" 
                            HorizontalAlignment="Center"/>
-                <Image Source="Images\Logo_app.png" Width="352" Height="225" Margin="0,33,0,0"/>
+                <Image Source="/Images/Logo_app.png" Width="352" Height="225" Margin="0,33,0,0"/>
             </StackPanel>
             
             <StackPanel Grid.Row="1">

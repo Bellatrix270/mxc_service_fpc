@@ -41,4 +41,25 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+  <Style x:Key="MinimizeButton" TargetType="Button">
+    <Setter Property="Background" Value="#171921"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border CornerRadius="10,0,10,0" Background="{TemplateBinding Background}" BorderThickness="1">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="#C3AEFF"></Setter>
+        <Setter Property="Cursor" Value="Hand"/>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
 </ResourceDictionary>
