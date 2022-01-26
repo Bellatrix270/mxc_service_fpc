@@ -51,6 +51,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="UserControls\BindablePasswordBox.xaml.cs">
+      <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AuthorizationWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\Windows\MainMenuWindow.xaml.cs">
@@ -68,6 +71,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles\ButtonTheme.xaml" />
+    <Page Include="UserControls\BindablePasswordBox.xaml" />
     <Page Include="Views\Windows\MainMenuWindow.xaml" />
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

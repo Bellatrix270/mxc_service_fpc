@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:wpf_mzc_app.ViewModels"
         xmlns:local="clr-namespace:wpf_mzc_app"
+        xmlns:userControls="clr-namespace:wpf_mzc_app.UserControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="480"
         AllowsTransparency="True" Background="Transparent"
@@ -66,10 +67,11 @@
                         Background="White"
                         Opacity="0.5"/>
                 
-                <PasswordBox Margin="0,70,0,0" 
-                             Password="Ваш пароль"
+                <userControls:BindablePasswordBox 
+                             Margin="0,70,0,0" 
+                             Password="{Binding PasswordUser,
+                             UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                              Padding="3,5,0,0"
-                             FontFamily="Exo2"
                              FontWeight="Regular"
                              FontSize="18"
                              Foreground="White"
