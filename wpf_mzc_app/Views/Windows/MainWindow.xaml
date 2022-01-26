@@ -3,11 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:wpf_mzc_app.ViewModels"
         xmlns:local="clr-namespace:wpf_mzc_app"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="480"
         AllowsTransparency="True" Background="Transparent"
-        WindowStyle="None" ResizeMode="NoResize">
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:AuthorizationWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid>
             
@@ -44,7 +49,7 @@
             </StackPanel>
             
             <StackPanel Grid.Row="1">
-                <TextBox Text="Логин"
+                <TextBox Text="{Binding LoginUser, UpdateSourceTrigger=PropertyChanged}"
                          Padding="3,5,0,0"
                          FontFamily="Exo2"
                          FontWeight="Regular"
@@ -61,18 +66,19 @@
                         Background="White"
                         Opacity="0.5"/>
                 
-                <PasswordBox Margin="0,70,0,0" Password="Пароль"
-                         Padding="3,5,0,0"
-                         FontFamily="Exo2"
-                         FontWeight="Regular"
-                         FontSize="18"
-                         Foreground="White"
-                         Background="#131314"
-                         BorderThickness="0"
-                         Width="348"
-                         Height="30"
-                         Opacity="0.5"
-                         HorizontalAlignment="Center"/>
+                <PasswordBox Margin="0,70,0,0" 
+                             Password="Ваш пароль"
+                             Padding="3,5,0,0"
+                             FontFamily="Exo2"
+                             FontWeight="Regular"
+                             FontSize="18"
+                             Foreground="White"
+                             Background="#131314"
+                             BorderThickness="0"
+                             Width="348"
+                             Height="30"
+                             Opacity="0.5"
+                             HorizontalAlignment="Center"/>
                 <Border Width="350"
                         Height="2"
                         Background="White"
