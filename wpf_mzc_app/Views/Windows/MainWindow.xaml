@@ -36,6 +36,7 @@
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Top"
                     Style="{StaticResource CloseButton}"
+                    Command="{Binding CloseApplicationCommand}"
                     > <Image Source="/Images/Exit.png" Width="13" Height="13"></Image>
             </Button>
             
