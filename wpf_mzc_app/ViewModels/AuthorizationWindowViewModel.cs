@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using wpf_mzc_app.Infrastructure.Commands;
+using wpf_mzc_app.Models.ModelDB;
 
 namespace wpf_mzc_app.ViewModels
 {
@@ -34,6 +36,23 @@ namespace wpf_mzc_app.ViewModels
         {
             Application.Current.Shutdown();
         }
+        
+        public ICommand AuthorizationUserCommand { get; }
+
+        private bool CanAuthorizationUserCommandExecute(object obj) => true; // TODO: add validate data.
+
+        private void OnAuthorizationUserCommandExecute(object obj)
+        {
+            using (MZCServicePC db = new MZCServicePC())
+            {
+                var emp = db.employees.FirstOrDefault(
+                    d => d.email == LoginUser &&  d.password == PasswordUser
+                    ); //Firsts query very slow. Approximately 1.7 sec.
+                
+                if (emp != null)
+                    new WelcomeWindow().Show();
+            }
+        }
 
         #endregion
 
@@ -41,6 +60,9 @@ namespace wpf_mzc_app.ViewModels
         {
             CloseApplicationCommand =
                 new RelayComand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+
+            AuthorizationUserCommand =
+                new RelayComand(OnAuthorizationUserCommandExecute, CanAuthorizationUserCommandExecute);
         }
     }
 }

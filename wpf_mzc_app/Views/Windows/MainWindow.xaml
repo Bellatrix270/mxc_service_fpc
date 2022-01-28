@@ -94,7 +94,8 @@
                     Height="36" 
                     Margin="0,50,0,0"
                     Name="SignUpButton"
-                    Content="войти"/>
+                    Content="войти"
+                    Command="{Binding AuthorizationUserCommand}"/>
             
         </Grid>
     </Grid>

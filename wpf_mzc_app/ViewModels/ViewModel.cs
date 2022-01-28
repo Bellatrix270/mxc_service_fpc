@@ -2,8 +2,12 @@
 using System.Runtime.CompilerServices;
 using wpf_mzc_app.Annotations;
 
+
 namespace wpf_mzc_app.ViewModels
-{
+{   
+    /// <summary>
+    /// Basic class implementing INPC
+    /// </summary>
     public abstract class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
