@@ -1,0 +1,67 @@
+﻿<Window x:Class="wpf_mzc_app.Views.Windows.ViewTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:wpf_mzc_app.Views.Windows"
+        mc:Ignorable="d"
+        Title="ViewTableWindow" Height="720" Width="1280"
+        Style="{StaticResource GradientRoundWindow}">
+    <Window.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource RoundButton}">
+            <Setter Property="Background" Value="#131314"/>
+        </Style>
+    </Window.Resources>
+  <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="45">
+                <TextBlock x:Name="TextBlockTableName" Text="Название таблицы" 
+                           FontSize="36" 
+                           FontWeight="SemiBold" 
+                           Foreground="White"/>
+                <TextBlock Text="режим : доступный режим" 
+                           FontSize="19" 
+                           FontWeight="Regular" 
+                           Foreground="White" 
+                           HorizontalAlignment="Center"
+                           Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <Button Width="54" 
+                    Height="54"
+                    HorizontalAlignment="Left" 
+                    Background="#131314"
+                    Margin="50">
+            </Button>
+            <Border Height="36" Width="227" 
+                     HorizontalAlignment="Right" 
+                     VerticalAlignment="Bottom"
+                     Margin="0,0,50,0"
+                     BorderThickness="3"
+                     BorderBrush="#836DC0">
+                <StackPanel Orientation="Horizontal" Margin="0,-36,0,0" VerticalAlignment="Center" FlowDirection="RightToLeft">
+                  <Button Width="36" Height="36" Margin="0,0,15,0"/>
+                  <Button Width="36" Height="36" Margin="0,0,15,0"/>
+                  <Button Width="36" Height="36" Margin="0,0,15,0"/>
+                </StackPanel>
+              
+            </Border>
+        </Grid>
+
+        <DataGrid Grid.Row="1" x:Name="DataGridTable"
+                  ColumnHeaderHeight="50" 
+                  
+                  GridLinesVisibility="Horizontal" 
+                  Background="#131314" 
+                  BorderThickness="0" 
+                  HorizontalGridLinesBrush="White"
+                  Margin="50,0,50,50">
+
+        </DataGrid>
+    </Grid>
+</Window>

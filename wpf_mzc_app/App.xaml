@@ -7,6 +7,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/ButtonTheme.xaml"/>
+                <ResourceDictionary Source="Styles/WindowTheme.xaml"/>
+                <ResourceDictionary Source="Styles/BorderTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

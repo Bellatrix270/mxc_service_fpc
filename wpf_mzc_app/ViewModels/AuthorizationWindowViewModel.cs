@@ -3,13 +3,15 @@ using System.Windows;
 using System.Windows.Input;
 using wpf_mzc_app.Infrastructure.Commands;
 using wpf_mzc_app.Models.ModelDB;
+using wpf_mzc_app.Services;
+using wpf_mzc_app.Views.Windows;
 
 namespace wpf_mzc_app.ViewModels
 {
     public class AuthorizationWindowViewModel : ViewModel
     {
         #region Property
-        private string _LoginUser = "Ваш логин";
+        private string _LoginUser = "Archi.dronerov@yandex.ru";
 
         public string LoginUser
         {
@@ -17,7 +19,7 @@ namespace wpf_mzc_app.ViewModels
             set => Set(ref _LoginUser, value);
         }
 
-        private string _PasswordUser = "Ваш пароль";
+        private string _PasswordUser = "D21BmeC92gA33ool";
 
         public string PasswordUser
         {
@@ -48,9 +50,12 @@ namespace wpf_mzc_app.ViewModels
                 var emp = db.employees.FirstOrDefault(
                     d => d.email == LoginUser &&  d.password == PasswordUser
                     ); //Firsts query very slow. Approximately 1.7 sec.
-                
+
                 if (emp != null)
-                    new WelcomeWindow().Show();
+                {
+                    EmployeesService.SendData(emp);
+                    new MainMenuWindow().Show();
+                }
             }
         }
 

@@ -3,47 +3,53 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:wpf_mzc_app.ViewModels"
         xmlns:local="clr-namespace:wpf_mzc_app.Views.Windows"
         mc:Ignorable="d"
         Title="MainMenuWindow" Height="720" Width="1280"
         AllowsTransparency="True" Background="Transparent"
-        WindowStyle="None" ResizeMode="NoResize">
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:MainMenuViewModel/>
+    </Window.DataContext>
     <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="27"/>
-        <RowDefinition Height="100"/>
-        <RowDefinition/>
-      </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-      <Border CornerRadius="10" Grid.RowSpan="3">
+        <Border CornerRadius="10" Grid.RowSpan="3">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientStop Color="#252834" Offset="0.0"/>
                     <GradientStop Color="#15171E" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-      </Border>
+        </Border>
 
-      <Line Grid.Row="0" Stroke="#171921" StrokeThickness="7" X1="21" Y1="3.5" X2="1260" Y2="3.5">
-        <Line.Effect>
+        <Line Grid.Row="0" Stroke="#171921" StrokeThickness="7" X1="21" Y1="3.5" X2="1260" Y2="3.5">
+            <Line.Effect>
                 <DropShadowEffect Color="Black" Direction="230" ShadowDepth="5" Opacity="0.5" BlurRadius="9"/>
-        </Line.Effect>
-      </Line>
+            </Line.Effect>
+        </Line>
 
-      <Button Grid.Row="0" 
+        <Button Grid.Row="0" 
               Height="27" 
               Width="27" 
               HorizontalAlignment="Right"
               VerticalAlignment="Top"
               Style="{StaticResource CloseButton}"
+              Command="{Binding CloseApplicationCommand}"
               Margin="-0.8">
-        <Image Source="/Images/Exit.png" Width="13" Height="13"/>
+            <Image Source="/Images/Exit.png" Width="13" Height="13"/>
             <Button.Effect>
                 <DropShadowEffect Color="Black" Direction="310" ShadowDepth="5" Opacity="0.5" BlurRadius="9"/>
             </Button.Effect>
-      </Button>
+        </Button>
 
-      <Button Grid.Row="0" 
+        <Button Grid.Row="0" 
               Height="27" 
               Width="27" 
               HorizontalAlignment="Left"
@@ -51,85 +57,121 @@
               Style="{StaticResource MinimizeButton}"
               Margin="-0.8">
             <Polyline Stroke="#45FFBC" StrokeThickness="1" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Points="0,0 10,0" />
-        <Button.Effect>
-          <DropShadowEffect Color="Black" Direction="290" ShadowDepth="5" Opacity="0.5" BlurRadius="9"/>
-        </Button.Effect>
-      </Button>
-        
-       <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+            <Button.Effect>
+                <DropShadowEffect Color="Black" Direction="290" ShadowDepth="5" Opacity="0.5" BlurRadius="9"/>
+            </Button.Effect>
+        </Button>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
             <TextBlock Text="Форма управления" 
                        HorizontalAlignment="Center"
                        Foreground="White"
                        FontSize="36"
                        FontWeight="SemiBold"/>
-            <TextBlock Text="вы зашли, как администратор"
+            <TextBlock Text="{Binding AcssesTitle}"
                        HorizontalAlignment="Center"
                        Foreground="White"
                        FontSize="21"
                        FontWeight="Regular"
                        Margin="0,5,0,0"/>
-      </StackPanel>
+        </StackPanel>
 
         <Grid Grid.Row="2" Margin="124,30,124,100">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="390"/>
-              <ColumnDefinition/>
+                <ColumnDefinition Width="390"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="#131314" CornerRadius="10" BorderThickness="3" Margin="0,0,90,0">
-              <StackPanel Orientation="Vertical">
-                <TextBlock Text="Список таблиц"
+            <Border Grid.Column="0" Background="#131314" CornerRadius="10" BorderThickness="3" Style="{StaticResource BorderAnimationDropShadow}" Margin="0,0,90,0">
+                <DockPanel>
+                    <TextBlock Text="Список таблиц"
                            Foreground="White"
                            FontSize="30"
                            FontWeight="Medium"
                            HorizontalAlignment="Center"
-                           Margin="0,16,0,0"/>
-                    <StackPanel Orientation="Horizontal">
-                      <Polygon Fill="#AC8FFF" Points="3, 7, 12, 11, 3, 16" /> 
-                        <ListBox Background="Transparent" Foreground="White" BorderThickness="0"  FontWeight="Light">
-                        <ListBoxItem FontWeight="Regular">Рекламные партнёры</ListBoxItem>
-                        <ListBoxItem>Рекламные партнёры</ListBoxItem>
-                        <ListBoxItem>Рекламные партнёры</ListBoxItem>
-                        <ListBoxItem>Рекламные партнёры</ListBoxItem>
-                        <ListBoxItem>Рекламные партнёры</ListBoxItem>
-                        <ListBoxItem>Рекламные партнёры</ListBoxItem>
-                      </ListBox>
+                           Margin="0,16,0,35"
+                           DockPanel.Dock="Top"/>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                        <Canvas x:Name="CanvasTriagle" Width="15" Margin="10,0,0,0">
+                            <Polygon x:Name="triangle" Fill="#AC8FFF" Points="3, 7, 12, 11, 3, 16" Height="20" Width="15" Canvas.Top="7"/>
+                        </Canvas>
+                        <ListBox Background="Transparent" FontSize="20" Foreground="White" BorderThickness="0"  FontWeight="Light">
+                            <ListBoxItem FontWeight="Regular">Рекламные партнёры</ListBoxItem>
+                            <ListBoxItem>Конфигурации пк</ListBoxItem>
+                            <ListBoxItem>Поставщики</ListBoxItem>
+                            <ListBoxItem>Сотрудники</ListBoxItem>
+                            <ListBoxItem>Поставки</ListBoxItem>
+                            <ListBoxItem>Склады</ListBoxItem>
+                            <ListBoxItem>Заказы</ListBoxItem>
+                        </ListBox>
                     </StackPanel>
-                <Image Source="/Images/Wave.png" Width="295" Height="57" VerticalAlignment="Bottom"/>
-              </StackPanel>
+                    <Image Source="/Images/Wave.png" Width="295" Height="57" VerticalAlignment="Bottom"/>
+                </DockPanel>
+                <Border.Effect>
+                  <DropShadowEffect Color="Black" Direction="300" ShadowDepth="0" Opacity="0" BlurRadius="9"/>
+                </Border.Effect>
             </Border>
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                  <RowDefinition Height="100"/>
-                  <RowDefinition/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" Background="#131314" CornerRadius="10" BorderThickness="3" Margin="0,0,0,0">
+                <Border Grid.Row="0" Background="#131314" CornerRadius="10" BorderThickness="3" Style="{StaticResource BorderAnimationDropShadow}" Margin="0,0,0,0">
                     <StackPanel Orientation="Vertical">
                         <Grid>
-                            <Button Style="{StaticResource MinimizeButton}" Height="36" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-1,-1,0,0">
-                              <Image Source="/Images/Eye_open.png" Height="24" Width="24"/>
+                            <Button Style="{StaticResource MinimizeButton}" Height="36" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding HideInfoCommand}" Margin="-1,-1,0,0">
+                                <Image x:Name="ImageHide" Source="/Images/Eye_open.png" Height="24" Width="24"/>
                             </Button>
-                            <TextBlock  Text="Персональные данные" Foreground="White" FontSize="30" FontWeight="Medium" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Персональные данные" Foreground="White" FontSize="30" FontWeight="Medium" HorizontalAlignment="Center" Margin="0,7,0,0"/>
                         </Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                          <TextBlock Text="Имя:" Foreground="White" FontSize="20" FontWeight="Light"/>
-                          <TextBlock Text="Фамилия:" Foreground="White" FontSize="20" FontWeight="Light"/>
-                          <TextBlock Text="Отчество:" Foreground="White" FontSize="20" FontWeight="Light"/>
+                            <TextBlock Text="{Binding UserSecondName, UpdateSourceTrigger=PropertyChanged}" 
+                                       Foreground="White" FontSize="20" FontWeight="Light" Margin="0,0,21,0"/>
+                            <TextBlock Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" 
+                                       Foreground="White" FontSize="20" FontWeight="Light" Margin="0,0,21,0"/>
+                            <TextBlock Text="{Binding UserPatronymic, UpdateSourceTrigger=PropertyChanged}" 
+                                       Foreground="White" FontSize="20" FontWeight="Light" Margin="0,0,21,0"/>
                         </StackPanel>
                     </StackPanel>
+                  <Border.Effect>
+                    <DropShadowEffect Color="Black" Direction="300" ShadowDepth="0" Opacity="0" BlurRadius="9"/>
+                  </Border.Effect>
                 </Border>
 
-                <Border Grid.Row="1" Background="#131314" CornerRadius="10" BorderThickness="3" Margin="0,90,0,0">
+                <Border Grid.Row="1" Background="#131314" CornerRadius="10" BorderThickness="3" Style="{StaticResource BorderAnimationDropShadow}" Margin="0,90,0,0">
                     <StackPanel Orientation="Vertical">
-                      <TextBlock Text="Активные задачи" Foreground="White" FontSize="30" FontWeight="Medium" HorizontalAlignment="Center"/>
-                      <ListBox Margin="36">
-                        <ListBoxItem/>
-                        <ListBoxItem/>
-                        <ListBoxItem/>
-                      </ListBox>
+                        <TextBlock Text="Активные задачи" Foreground="White" FontSize="30" FontWeight="Medium" HorizontalAlignment="Center" Margin="0,16,0,0"/>
+                        <ListBox Background="Transparent" Foreground="White" BorderThickness="0"  FontWeight="Light" Margin="36">
+                            <ListBoxItem>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="просмотреть отчёты" FontSize="20"/>
+                                    <Line Stroke="Gray" StrokeThickness="1" X1="1" Y1="0" X2="1" Y2="30" Margin="5,0,5,0"/>
+                                    <TextBlock Text="входящие: 3" FontSize="20" Foreground="Gray"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem>
+                              <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="просмотреть отчёты" FontSize="20"/>
+                                <Line Stroke="Gray" StrokeThickness="1" X1="1" Y1="0" X2="1" Y2="30" Margin="5,0,5,0"/>
+                                <TextBlock Text="входящие: 3" FontSize="20" Foreground="Gray"/>
+                              </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem>
+                              <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="просмотреть отчёты" FontSize="20"/>
+                                <Line Stroke="Gray" StrokeThickness="1" X1="1" Y1="0" X2="1" Y2="30" Margin="5,0,5,0"/>
+                                <TextBlock Text="входящие: 3" FontSize="20" Foreground="Gray"/>
+                              </StackPanel>
+                            </ListBoxItem>
+                        </ListBox>
                     </StackPanel>
+                  <Border.Effect>
+                    <DropShadowEffect Color="Black" Direction="300" ShadowDepth="0" Opacity="0" BlurRadius="9"/>
+                  </Border.Effect>
                 </Border>
             </Grid>
         </Grid>

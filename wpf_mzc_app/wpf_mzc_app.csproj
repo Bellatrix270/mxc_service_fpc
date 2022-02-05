@@ -119,10 +119,13 @@
     <Compile Include="Models\ModelDB\MZCServicePC.cs" />
     <Compile Include="Models\ModelDB\post.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Services\Messenger.cs" />
+    <Compile Include="Services\EmployeesService.cs" />
     <Compile Include="UserControls\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AuthorizationWindowViewModel.cs" />
+    <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\Windows\MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
@@ -131,6 +134,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Windows\ViewTableWindow.xaml.cs">
+      <DependentUpon>ViewTableWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
@@ -138,13 +144,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Styles\BorderTheme.xaml" />
     <Page Include="Styles\ButtonTheme.xaml" />
+    <Page Include="Styles\DataGridTheme.xaml" />
+    <Page Include="Styles\WindowTheme.xaml" />
     <Page Include="UserControls\BindablePasswordBox.xaml" />
     <Page Include="Views\Windows\MainMenuWindow.xaml" />
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Windows\ViewTableWindow.xaml" />
     <Page Include="Views\Windows\WelcomeWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +180,7 @@
     <Resource Include="Images\Logo_app.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ViewModels\Base" />
     <Folder Include="ViewModels\Base\" />
   </ItemGroup>
   <ItemGroup>
